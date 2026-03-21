@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarreas</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="notas.html">Agregar Nota</a></li>
+            </ul>
+        </aside>
+        <main class="content_principal">
+            <form class="datos">
+                <div>
+                    <label for="tarea">Tarea</label>
+                    <input type="text" required id="tarea">
+                </div>
+                <div>
+                    <label for="tipo">Tipo de pendiente</label>
+                    <select id="tipo">
+                        <option value="Urgente">Urgente</option>
+                        <option value="Postergable">Postergable</option>
+                        <option value="Pronto ">Pronto </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" required>
+                </div>
+
+
+                <button type="submit">Guardar</button>
+
+            </form>
+
+            <section class="tareas-cargadas">
+                <h1>Tareas</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tarea</th>
+                            <th>Tipo de pendiente</th>
+                            <th>Fecha</th>
+                            <th>Eliminar</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenedor">
+
+                    </tbody>
+                    
+                </table>
+            </section>
+
+
+        </main>
+    </div>
+    <script src="../js/tareas.js"></script>
+</body>
+
+
+</html>
