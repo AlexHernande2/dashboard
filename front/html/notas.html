@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas</title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
-    
+    <div class="dashboard">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="tarea.html">Agregar Tarea</a></li>
+            </ul>
+        </aside>
+        <main class="content_principal">
+            <h1 class="titulo">Notas</h1>
+            <form class="datos-notas" id="datos-form">
+                <label for="">Nota</label>
+                <input type="text" required id="descripcion-nota">
+                <button type="submit" class="btn-guardar">Guardar</button>
+            </form>
+            <section class="contenedor-notas">
+                <table id="table-notas" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Descripción</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenedor-tareas"></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="../js/notas.js"></script>
 </body>
+
 </html>

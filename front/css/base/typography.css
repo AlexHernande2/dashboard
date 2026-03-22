@@ -1,0 +1,12 @@
+.titulo{
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#mensaje{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    
+} 

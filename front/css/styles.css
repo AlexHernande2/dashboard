@@ -1,3 +1,6 @@
 @import url(./layout/grid.css);
 @import url(./pages/page.css); 
 @import url(./components/modal.css);
+@import url(./components/table.css);
+@import url(./base/typography.css);
+@import url(./components/form.css);

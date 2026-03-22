@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <title>Dashboard</title>
 </head>
+
 <body>
     <div class="dashboard">
         <aside class="sidebar">
             <!-- Menu lateral -->
-             <p>Hola</p>
-             <ul>
+            
+            <ul>
                 <li><a href="tarea.html">Agregar tarea</a></li>
                 <li><a href="notas.html">Agregar Nota</a></li>
-             </ul>
+            </ul>
         </aside>
         <main class="content">
             <div class="tareas-hoy">
                 <h1>Tareas para hoy</h1>
+                <div id="mensaje"></div>
+                <section>
+                    <table id="tabla-tareas" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Tarea</th>
+                                <th>Tipo de Pendiente</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contenedor-info"></tbody>
+                    </table>
+                </section>
             </div>
             <div class="notas">
                 <h1>Notas</h1>
@@ -26,9 +41,10 @@
             <div class="clima">
                 <h1>Clima</h1>
             </div>
-            
+
         </main>
     </div>
-    
+    <script src="../js/index.js"></script>
 </body>
+
 </html>

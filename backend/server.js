@@ -27,7 +27,7 @@ app.post("/tareas", (req, res) => {
     //JSON.stringify(tareas) convierte el obj/array a txtjson
     fs.writeFile("tareas.json", JSON.stringify(tareas), (err) => {
       if (err) {
-        return res.status(500).json({ error: "Error al leer archivo" });
+        return res.status(500).json({ error: "Error al escribir archivo" });
       }
       res.json({ mensaje: "Tarea guardada" });
     });
@@ -107,6 +107,50 @@ app.put("/tareas/:id", (req,res)=>{
   })
 })
 
+
+app.post("/notas", (req, res)=>{
+  fs.readFile("notas.json", "utf-8", (err,data)=>{
+    let notas =[];
+    if(err){
+      console.log("Error al leer el archivo notas.json", err);
+      return res.status(500).json({error:"Error al leer el archivo"});
+    }
+    //convertir datos a objetos 
+    notas= JSON.parse(data);
+    notas.push(req.body);
+
+    //guardar
+    fs.writeFile("notas.json", JSON.stringify(notas), (err)=>{
+      if(err){
+        return res.status(500).json({error: "Error al escribir en el archivo"});
+      }
+      res.json({mensaje: "Nota guardada"})
+    })
+  })
+})
+
+
+//get
+app.get("/notas", (req,res)=>{
+  fs.readFile("notas.json", "utf-8", (err,data)=>{
+    if(err){
+      return res.status(500).json({error:"Error al leer el archivo"})
+    }
+    const notas= JSON.parse(data);
+    res.json(notas);
+  })
+})
+
+/**app.get("/tareas", (req, res) => {
+  fs.readFile("tareas.json", "utf-8", (err, data) => {
+    if (err) {
+      console.log("Error al leer", err);
+      return;
+    }
+    const tareas = JSON.parse(data);
+    res.json(tareas);
+  });
+}); */
 //puerto
 const PORT = 3000;
 

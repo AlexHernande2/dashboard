@@ -12,3 +12,20 @@
     grid-template-rows: 300px 200px 1fr;
 
 }
+
+
+.datos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 800px;
+    margin: 20px auto;
+    gap: 15px;
+}
+
+
+
+.btn-guardar{
+    margin-top: 10px;
+    grid-column: 2;
+
+}
