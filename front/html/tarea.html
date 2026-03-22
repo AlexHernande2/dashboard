@@ -45,6 +45,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Tarea</th>
                             <th>Tipo de pendiente</th>
                             <th>Fecha</th>
@@ -55,9 +56,24 @@
                     <tbody id="contenedor">
 
                     </tbody>
-                    
+
                 </table>
             </section>
+
+            <div id="modal-editar">
+                <label for="edit-tarea">Tarea</label>
+                <input id="edit-tarea">
+                <!-- <input id="edit-tipo"> -->
+                 <label for="edit-tipo">Tipo de Pendiente</label>
+                <select id="edit-tipo">
+                    <option value="Urgente">Urgente</option>
+                    <option value="Postergable">Postergable</option>
+                    <option value="Pronto ">Pronto </option>
+                </select>
+                <label for="edit-fecha">Fecha</label>
+                <input id="edit-fecha" type="date">
+                <button onclick="guardarcambios()">Guardar</button>
+            </div>
 
 
         </main>

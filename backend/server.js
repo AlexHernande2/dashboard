@@ -47,6 +47,66 @@ app.get("/tareas", (req, res) => {
   });
 });
 
+//obtener uno en especifico 
+app.get("/tareas/:id", (req, res) => {
+  const id= req.params.id;
+  fs.readFile("tareas.json", "utf-8", (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: "Error al leer el archivo" });
+    }
+
+    const tareas = JSON.parse(data);
+    //buscar uno en especifico 
+    const tarea= tareas.find((t)=> t.id ==id);
+    res.json(tarea);
+  });
+});
+
+
+//delete
+app.delete("/tareas/:id", (req, res) => {
+  const id = req.params.id;
+  //leer archivo
+  fs.readFile("tareas.json", "utf-8", (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: "Error al leer el archivo" });
+    }
+    let tareas = JSON.parse(data);
+    tareas = tareas.filter((t) => t.id != id);
+    fs.writeFile("tareas.json", JSON.stringify(tareas), (err) => {
+      if (err) {
+        return res.status(500).json({ error: "Error al leer archivo" });
+      }
+      res.json({ mensaje: "Tarea guardada" });
+    });
+    console.log(req.body);
+  });
+});
+
+
+//actualizar datos 
+app.put("/tareas/:id", (req,res)=>{
+  const id = req.params.id;
+
+  fs.readFile("tareas.json", "utf-8", (err,data)=>{
+    if(err){
+      return res.status(500).json({ errror: "Error al leer el archivo PUT"});
+    }
+    //convertir datos a obje js
+    let tareas = JSON.parse(data);
+    //map recorre todo el array y devuelve uno nuevo con lo que se reemplace
+    tareas= tareas.map(t=>{
+      if(t.id == id){
+        return { ...t, ...req.body};
+      }
+      return t;
+    });
+    fs.writeFile("tareas.json", JSON.stringify(tareas), ()=>{
+      res.json({mensaje: "Tarea Actualizada"});
+    })
+  })
+})
+
 //puerto
 const PORT = 3000;
 
