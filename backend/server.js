@@ -107,7 +107,7 @@ app.put("/tareas/:id", (req,res)=>{
   })
 })
 
-
+//---------------NOTAS--------------//
 app.post("/notas", (req, res)=>{
   fs.readFile("notas.json", "utf-8", (err,data)=>{
     let notas =[];
@@ -141,17 +141,44 @@ app.get("/notas", (req,res)=>{
   })
 })
 
-/**app.get("/tareas", (req, res) => {
+//DELETE
+app.delete("/notas/:id", (req, res)=>{
+  const id = req.params.id;
+  fs.readFile("notas.json", "utf-8", (err,data)=>{
+    if(err){
+      return res.status(500).json({error: "Error al leer el archivo"})
+    }
+    let notas = JSON.parse(data)
+    notas= notas.filter((t)=> t.id != id);
+    fs.writeFile("notas.json", JSON.stringify(notas), (err)=>{
+      if(err){
+        return res.status(500).json({error:"No se pudo eliminar el usuario"})
+      }
+      res.json({mensaje: "Nota Eliminada"})
+    })
+  })
+})
+
+
+/**app.delete("/tareas/:id", (req, res) => {
+  const id = req.params.id;
+  //leer archivo
   fs.readFile("tareas.json", "utf-8", (err, data) => {
     if (err) {
-      console.log("Error al leer", err);
-      return;
+      return res.status(500).json({ error: "Error al leer el archivo" });
     }
-    const tareas = JSON.parse(data);
-    res.json(tareas);
+    let tareas = JSON.parse(data);
+    tareas = tareas.filter((t) => t.id != id);
+    fs.writeFile("tareas.json", JSON.stringify(tareas), (err) => {
+      if (err) {
+        return res.status(500).json({ error: "Error al leer archivo" });
+      }
+      res.json({ mensaje: "Tarea guardada" });
+    });
+    console.log(req.body);
   });
 }); */
-//puerto
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
